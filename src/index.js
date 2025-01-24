@@ -23,9 +23,12 @@ fetch(breedUrl)
 
 function handleDogList(json) {
     Object.keys(json.message).forEach(i => {
-        console.log(i);
+        // console.log(i);
         const li = document.createElement('li');
         li.textContent = i;
+        li.addEventListener('click', () => {
+            li.style.backgroundColor = 'rgb(30,30,200,.5)';
+        })
         document.querySelector('#dog-breeds').appendChild(li);
     })
 }
