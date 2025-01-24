@@ -5,7 +5,6 @@ const breedUrl = "https://dog.ceo/api/breeds/list/all";
 
 fetch(imgUrl)
     .then(res => res.json())
-    // .then(json => console.log(json))
     .then(json => handleImages(json));
 
 function handleImages(json) {
@@ -14,5 +13,19 @@ function handleImages(json) {
         img.src = image;
         img.style.width = '200px';
         document.querySelector('#dog-image-container').appendChild(img);
+    })
+}
+
+fetch(breedUrl)
+    .then(res => res.json())
+    // .then(json => console.log(json))
+    .then(json => handleDogList(json));
+
+function handleDogList(json) {
+    Object.keys(json.message).forEach(i => {
+        console.log(i);
+        const li = document.createElement('li');
+        li.textContent = i;
+        document.querySelector('#dog-breeds').appendChild(li);
     })
 }
