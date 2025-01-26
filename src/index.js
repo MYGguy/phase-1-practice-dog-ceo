@@ -20,7 +20,6 @@ function handleImages(json) {
 
 fetch(breedUrl)
     .then(res => res.json())
-    // .then(json => console.log(json))
     .then(json => handleDogList(json));
 
 function handleDogList(json) {
