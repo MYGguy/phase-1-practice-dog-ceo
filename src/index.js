@@ -3,6 +3,8 @@ console.log('%c HI', 'color: green')
 const imgUrl = "https://dog.ceo/api/breeds/image/random/4";
 const breedUrl = "https://dog.ceo/api/breeds/list/all";
 
+const dogList = [];
+
 fetch(imgUrl)
     .then(res => res.json())
     .then(json => handleImages(json));
@@ -23,7 +25,7 @@ fetch(breedUrl)
 
 function handleDogList(json) {
     Object.keys(json.message).forEach(i => {
-        // console.log(i);
+        dogList.push(i);
         const li = document.createElement('li');
         li.textContent = i;
         li.addEventListener('click', () => {
@@ -32,3 +34,8 @@ function handleDogList(json) {
         document.querySelector('#dog-breeds').appendChild(li);
     })
 }
+
+//dropdown
+function handleDropdown() {
+
+};
