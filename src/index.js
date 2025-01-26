@@ -42,13 +42,13 @@ function handleDogList(json) {
 //dropdown
 
 //delete dog list
-function handleDropdown() {
+function handleDropdown(letter) {
     document.querySelector('#dog-breeds').textContent = '';
 
     //add dogs with selected letter
     dogList.forEach(dog => {
         let firstLetter = dog.slice(0, 1);
-        if (firstLetter == 'a') {
+        if (firstLetter == letter) {
             console.log(dog);
             const li = document.createElement('li');
             li.textContent = dog;
@@ -59,3 +59,8 @@ function handleDropdown() {
         }
     })
 };
+
+document.querySelector('#breed-dropdown').addEventListener('change', event => {
+    const selectedLetter = event.target.value;
+    handleDropdown(selectedLetter);
+})
