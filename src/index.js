@@ -13,7 +13,7 @@ function handleImages(json) {
     json.message.forEach(image => {
         const img = document.createElement('img');
         img.src = image;
-        img.style.width = '200px';
+        img.style.width = '50px';
         document.querySelector('#dog-image-container').appendChild(img);
     })
 }
@@ -31,10 +31,31 @@ function handleDogList(json) {
             li.style.backgroundColor = 'rgb(30,30,200,.5)';
         })
         document.querySelector('#dog-breeds').appendChild(li);
-    })
+    });
+    //run handledropdown right away
+    // handleDropdown();
 }
 
-//dropdown
-function handleDropdown() {
 
+
+
+//dropdown
+
+//delete dog list
+function handleDropdown() {
+    document.querySelector('#dog-breeds').textContent = '';
+
+    //add dogs with selected letter
+    dogList.forEach(dog => {
+        let firstLetter = dog.slice(0, 1);
+        if (firstLetter == 'a') {
+            console.log(dog);
+            const li = document.createElement('li');
+            li.textContent = dog;
+            li.addEventListener('click', () => {
+                li.style.backgroundColor = 'rgb(30,30,200,.5)';
+            })
+            document.querySelector('#dog-breeds').appendChild(li);
+        }
+    })
 };
